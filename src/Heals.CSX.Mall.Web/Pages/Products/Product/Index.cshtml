@@ -1,0 +1,72 @@
+@page
+@using Heals.CSX.Mall.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Heals.CSX.Mall.Web.Pages.Products.Product
+@using Heals.CSX.Mall.Localization
+@using Heals.CSX.Mall.Web.Menus
+@model IndexModel
+@inject IPageLayout PageLayout
+@inject IHtmlLocalizer<MallResource> L
+@inject IAuthorizationService Authorization
+@{
+    PageLayout.Content.Title = L["Product"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:Product"].Value);
+    PageLayout.Content.MenuItemName = MallMenus.Product;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Products/Product/index.js" />
+}
+@section styles
+{
+    <abp-style src="/Pages/Products/Product/index.css"/>
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["Product"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+			    @if (await Authorization.IsGrantedAsync(MallPermissions.Product.Create))
+                {
+                <abp-button id="NewProductButton"
+                            text="@L["CreateProduct"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="ProductTable" class="nowrap">
+            <thead>
+            <tr>
+                <th>@L["Actions"]</th>
+                <th>@L["ProductClinicId"]</th>
+                <th>@L["ProductClinicCode"]</th>
+                <th>@L["ProductName"]</th>
+                <th>@L["ProductProductID"]</th>
+                <th>@L["ProductSerialNumber"]</th>
+                <th>@L["ProductDescription"]</th>
+                <th>@L["ProductPictureUri"]</th>
+                <th>@L["ProductSpecification"]</th>
+                <th>@L["ProductSupplierName"]</th>
+                <th>@L["ProductUnit"]</th>
+                <th>@L["ProductUnitPrice"]</th>
+                <th>@L["ProductSRP"]</th>
+                <th>@L["ProductColor"]</th>
+                <th>@L["ProductStockLevel"]</th>
+                <th>@L["ProductBundled"]</th>
+                <th>@L["ProductCatalogTypeId"]</th>
+                <th>@L["ProductCatalogType"]</th>
+                <th>@L["ProductCatalogBrand"]</th>
+            </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Heals.CSX.Mall</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\lty\heals\code\csx-mall-bitbucket\src\Heals.CSX.Mall.HttpApi\Heals.CSX.Mall.HttpApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Heals.CSX.Mall.Application.Contracts\Heals.CSX.Mall.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="3.3.0" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="3.3.0" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="3.3.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="3.3.0" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Heals.CSX.Mall.HttpApi.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,67 @@
+@page
+@using Heals.CSX.Mall.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Heals.CSX.Mall.Web.Pages.Addresses.Address
+@using Heals.CSX.Mall.Localization
+@using Heals.CSX.Mall.Web.Menus
+@model IndexModel
+@inject IPageLayout PageLayout
+@inject IHtmlLocalizer<MallResource> L
+@inject IAuthorizationService Authorization
+@{
+    PageLayout.Content.Title = L["Address"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:Address"].Value);
+    PageLayout.Content.MenuItemName = MallMenus.Address;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Addresses/Address/index.js" />
+}
+@section styles
+{
+    <abp-style src="/Pages/Addresses/Address/index.css"/>
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["Address"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+			    @if (await Authorization.IsGrantedAsync(MallPermissions.Address.Create))
+                {
+                <abp-button id="NewAddressButton"
+                            text="@L["CreateAddress"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="AddressTable" class="nowrap">
+            <thead>
+            <tr>
+                <th>@L["Actions"]</th>
+                <th>@L["AddressClinicCode"]</th>
+                <th>@L["AddressClinicName"]</th>
+                <th>@L["AddressContacts"]</th>
+                <th>@L["AddressPhone"]</th>
+                <th>@L["AddressCustomerName"]</th>
+                <th>@L["AddressCustomerAccount"]</th>
+                <th>@L["AddressRemarks"]</th>
+                <th>@L["AddressHealsRemarks"]</th>
+                <th>@L["AddressStreet"]</th>
+                <th>@L["AddressCity"]</th>
+                <th>@L["AddressState"]</th>
+                <th>@L["AddressCountry"]</th>
+                <th>@L["AddressZipCode"]</th>
+            </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

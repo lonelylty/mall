@@ -1,0 +1,58 @@
+@page
+@using Heals.CSX.Mall.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Heals.CSX.Mall.Web.Pages.Orders.ProductItemOrdered
+@using Heals.CSX.Mall.Localization
+@using Heals.CSX.Mall.Web.Menus
+@model IndexModel
+@inject IPageLayout PageLayout
+@inject IHtmlLocalizer<MallResource> L
+@inject IAuthorizationService Authorization
+@{
+    PageLayout.Content.Title = L["ProductItemOrdered"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:ProductItemOrdered"].Value);
+    PageLayout.Content.MenuItemName = MallMenus.ProductItemOrdered;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Orders/ProductItemOrdered/index.js" />
+}
+@section styles
+{
+    <abp-style src="/Pages/Orders/ProductItemOrdered/index.css"/>
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["ProductItemOrdered"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+			    @if (await Authorization.IsGrantedAsync(MallPermissions.ProductItemOrdered.Create))
+                {
+                <abp-button id="NewProductItemOrderedButton"
+                            text="@L["CreateProductItemOrdered"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="ProductItemOrderedTable" class="nowrap">
+            <thead>
+            <tr>
+                <th>@L["Actions"]</th>
+                <th>@L["ProductItemOrderedProductId"]</th>
+                <th>@L["ProductItemOrderedProductSeqId"]</th>
+                <th>@L["ProductItemOrderedProductName"]</th>
+                <th>@L["ProductItemOrderedPictureUri"]</th>
+            </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

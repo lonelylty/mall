@@ -1,0 +1,56 @@
+@page
+@using Heals.CSX.Mall.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Heals.CSX.Mall.Web.Pages.Carts.Cart
+@using Heals.CSX.Mall.Localization
+@using Heals.CSX.Mall.Web.Menus
+@model IndexModel
+@inject IPageLayout PageLayout
+@inject IHtmlLocalizer<MallResource> L
+@inject IAuthorizationService Authorization
+@{
+    PageLayout.Content.Title = L["Cart"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:Cart"].Value);
+    PageLayout.Content.MenuItemName = MallMenus.Cart;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Carts/Cart/index.js" />
+}
+@section styles
+{
+    <abp-style src="/Pages/Carts/Cart/index.css"/>
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["Cart"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+			    @if (await Authorization.IsGrantedAsync(MallPermissions.Cart.Create))
+                {
+                <abp-button id="NewCartButton"
+                            text="@L["CreateCart"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="CartTable" class="nowrap">
+            <thead>
+            <tr>
+                <th>@L["Actions"]</th>
+                <th>@L["CartBuyerId"]</th>
+                <th>@L["CartItems"]</th>
+            </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Heals.CSX.Mall.HttpApi</name>
+    </assembly>
+    <members>
+        <member name="M:Heals.CSX.Mall.Controllers.AccountController.LoginAsync(Heals.CSX.Mall.Users.Dtos.LoginDto)">
+            <summary>
+            Login return token
+            </summary>
+            <param name="loginDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Heals.CSX.Mall.Controllers.MallController.Success``1(``0,System.String,System.Object)">
+            <summary>
+            Success
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <param name="message"></param>
+            <param name="entityForAuditing"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Heals.CSX.Mall.Controllers.MallController.Success(System.String)">
+            <summary>
+            Success
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Heals.CSX.Mall.Controllers.MallController.Failed(Heals.CSX.Mall.Models.ErrorCode,System.String)">
+            <summary>
+            Failed
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.CreateFail">
+            <summary>
+            创建失败
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.UpdateFail">
+            <summary>
+            修改失败
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.DeleteFail">
+            <summary>
+            删除失败
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.LoginFail">
+            <summary>
+            登录失败
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.FormatError">
+            <summary>
+            参数格式错误
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.Empty">
+            <summary>
+            无数据
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.Unauthorized">
+            <summary>
+            未授权
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.DataBaseError">
+            <summary>
+            数据库异常
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.UserData">
+            <summary>
+            用户数据错误
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.SystemException">
+            <summary>
+            系统异常
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.Unknown">
+            <summary>
+            未知错误
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.ModifyPasswordFail">
+            <summary>
+            修改密码失败
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.DuplicateKey">
+            <summary>
+            主键重复
+            </summary>
+        </member>
+        <member name="F:Heals.CSX.Mall.Models.ErrorCode.VerificationCode">
+            <summary>
+            验证码错误
+            </summary>
+        </member>
+        <member name="P:Heals.CSX.Mall.Models.InvokeResult`1.Code">
+            <summary>
+            错误代码
+            </summary>
+        </member>
+        <member name="P:Heals.CSX.Mall.Models.InvokeResult`1.Message">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="P:Heals.CSX.Mall.Models.InvokeResult`1.Data">
+            <summary>
+            数据结果
+            </summary>
+        </member>
+        <member name="P:Heals.CSX.Mall.Models.InvokeResult`1.DataForAudit">
+            <summary>
+            审计数据
+            </summary>
+        </member>
+        <member name="M:Heals.CSX.Mall.Models.InvokeResult`1.#ctor(`0,Heals.CSX.Mall.Models.ErrorCode,System.String)">
+            <summary>
+            初始化一个对象 ResultDto 实例
+            </summary>
+            <param name="data"></param>
+            <param name="code"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Heals.CSX.Mall.Orders.OrderController.RepeatOrderAsync(System.Guid)">
+            <summary>
+            Repeat Order
+            </summary>
+            <param name="id">Order Guid</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
